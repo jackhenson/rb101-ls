@@ -1,5 +1,5 @@
-# # a method that returns the sum of two integers 
-# #higher-level algorithm: add two numbers
+# # # # a method that returns the sum of two integers 
+# # # # higher-level algorithm: add two numbers
 
 # START
 
@@ -10,23 +10,17 @@
 # PRINT result
 
 
-# # a method that takes an array of strings, and returns a string that is all those strings concatenated together 
-# #higher-level algorithm: concatenate all strings from the given array
+# # # # a method that takes an array of strings, and returns a string that is all those strings concatenated together 
+# # # # higher-level algorithm: concatenate all strings from the given array
 
-# START
+START
 
-# Given an array of strings, arr
+Given an array of strings, called "arr"
 
-# SET new_string = value at first position of arr
+SET new_string = empty string
+SET iterator = 0
+WHILE iterator < size of arr
+  append each element to new_string
+  iterator = iterator + 1
 
-# def concatenate_string(arr)
-#   arr.join
-
-new_string = ""
-arr = ["hey", "there", "dude"]
-# puts arr.join(" ")
-arr.each do |string|
-  new_string += string
-end
-puts new_string 
-
+PRINT new_string
