@@ -8,10 +8,10 @@ end
 
 def operation_to_message(op)
   case op
-  when '1'; 'Adding'
-  when '2'; 'Subtracting'
-  when '3'; 'Multiplying'
-  when '4'; 'Dividing'
+  when '1' then 'Adding'
+  when '2' then 'Subtracting'
+  when '3' then 'Multiplying'
+  when '4' then 'Dividing'
   end
 end
 
@@ -30,7 +30,7 @@ end
 
 prompt("Hi #{name}!")
 
-loop do #main loop
+loop do # main loop
   number1 = ''
   loop do
     prompt("What is the first number?")
@@ -45,8 +45,8 @@ loop do #main loop
 
   number2 = ''
   loop do
-  prompt("What is the second number?")
-  number2 = Kernel.gets().chomp()
+    prompt("What is the second number?")
+    number2 = Kernel.gets().chomp()
 
     if valid_number?(number2)
       break
@@ -75,13 +75,12 @@ loop do #main loop
   end
 
   prompt("#{operation_to_message(operator)} the two numbers...")
-  
-  result = case operator
-          when '1'; number1.to_i() + number2.to_i()
-          when '2'; number1.to_i() - number2.to_i()
-          when '3'; number1.to_i() * number2.to_i()
-          when '4'; number1.to_f() / number2.to_f()
-          end
+  result =  case operator
+            when '1' then number1.to_i() + number2.to_i()
+            when '2' then number1.to_i() - number2.to_i()
+            when '3' then number1.to_i() * number2.to_i()
+            when '4' then number1.to_f() / number2.to_f()
+            end
 
   prompt("The result is #{result}.")
 
