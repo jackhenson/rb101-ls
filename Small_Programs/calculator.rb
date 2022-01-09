@@ -23,7 +23,6 @@ def number?(input)
   integer?(input) || float?(input)
 end
 
-
 def operation_to_message(op)
   case op
   when '1' then messages('adding', LANGUAGE)
@@ -40,13 +39,13 @@ loop do
   name = gets.chomp
 
   if name.empty?
-    prompt(messages('enter name', LANGUAGE))
+    prompt(messages('valid name', LANGUAGE))
   else
     break
   end
 end
 
-prompt(messages('hi', LANGUAGE) + " #{name}") 
+prompt(messages('hi', LANGUAGE) + " #{name}")
 
 loop do # main loop
   number1 = ''

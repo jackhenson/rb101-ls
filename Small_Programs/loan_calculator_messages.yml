@@ -1,0 +1,16 @@
+welcome: "Welcome to the Loan Calculator! Enter your name:"
+enter name: "Please enter your name:"
+hi: "Hi,"
+valid name: "Make sure to enter a valid name."
+amount: | 
+  What is the total loan amount?
+  Please enter a dollar amount (Ex: Enter 500 for $500):
+apr: |
+  What is the Annual Percentage Rate (APR)?
+  Please enter a number as a percentage (Ex: Enter 5 for 5%):
+duration: |
+  What is the loan duration?
+  Please enter total number of years (Ex: Enter 5 for 5 years):
+valid number: "That's not a valid number!"
+again: "Do you want to perform another calculation? (Y to calculate again)"
+goodbye: "Thank you for using the Loan Calculator,"

@@ -1,6 +1,5 @@
 en:
   welcome: "Welcome to the Calculator! Enter your name:"
-  enter name: "Please enter your name:"
   hi: "Hi,"
   valid name: "Make sure to enter a valid name."
   first number: "What is the first number?"
@@ -23,7 +22,6 @@ en:
 
 es:
   welcome: "¡Bienvenido a la Calculadora! Introduzca su nombre:"
-  enter name: "Por favor, escriba su nombre:"
   hi: "Hola,"
   valid name: "Asegúrate de ingresar un nombre válido."
   first number: "Cual es el primer numero?"
