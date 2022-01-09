@@ -1,3 +1,5 @@
+LANGUAGE = 'en'
+
 require 'yaml'
 MESSAGES = YAML.load_file('calculator_messages.yml')
 
@@ -24,38 +26,38 @@ end
 
 def operation_to_message(op)
   case op
-  when '1' then prompt(messages('adding'))
-  when '2' then prompt(messages('subtracting'))
-  when '3' then prompt(messages('multiplying'))
-  when '4' then prompt(messages('dividing'))
+  when '1' then messages('adding', LANGUAGE)
+  when '2' then messages('subtracting', LANGUAGE)
+  when '3' then messages('multiplying', LANGUAGE)
+  when '4' then messages('dividing', LANGUAGE)
   end
 end
 
-prompt(messages('welcome'))
+prompt(messages('welcome', LANGUAGE))
 
 name = ''
 loop do
   name = gets.chomp
 
   if name.empty?
-    prompt(messages('enter name'))
+    prompt(messages('enter name', LANGUAGE))
   else
     break
   end
 end
 
-prompt("Hi #{name}!")
+prompt(messages('hi', LANGUAGE) + " #{name}") 
 
 loop do # main loop
   number1 = ''
   loop do
-    prompt(messages('first number'))
+    prompt(messages('first number', LANGUAGE))
     number1 = gets.chomp
 
     if number?(number1)
       break
     else
-      prompt(messages('valid number'))
+      prompt(messages('valid number', LANGUAGE))
     end
   end
 
@@ -67,18 +69,18 @@ loop do # main loop
     if number?(number2)
       break
     else
-      prompt(messages('valid number'))
+      prompt(messages('valid number', LANGUAGE))
     end
   end
 
-  prompt(messages('operator'))
+  prompt(messages('operator', LANGUAGE))
 
   operator = ''
   loop do
     operator = gets.chomp
     if %w(1 2 3 4).include?(operator)
       break
-    else prompt("Must choose 1, 2, 3 or 4.")
+    else prompt(messages('valid op', LANGUAGE))
     end
   end
 
@@ -90,11 +92,11 @@ loop do # main loop
             when '4' then number1.to_f / number2.to_f
             end
 
-  prompt(messages('result') + " #{result}.")
+  prompt(messages('result', LANGUAGE) + " #{result}.")
 
-  prompt(messages('again'))
+  prompt(messages('again', LANGUAGE))
   answer = gets.chomp
   break unless answer.downcase.start_with?('y')
 end
 
-prompt(messages('goodbye'))
+prompt(messages('goodbye', LANGUAGE))
