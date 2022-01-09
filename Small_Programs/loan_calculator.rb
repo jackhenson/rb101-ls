@@ -18,7 +18,9 @@ def float?(input)
 end
 
 def number?(input)
-  integer?(input) || float?(input) rescue false
+  integer?(input) || float?(input)
+rescue ArgumentError
+  false
 end
 
 prompt(messages('welcome'))
@@ -42,7 +44,7 @@ loop do # main loop
     prompt(messages('amount'))
     total_loan_amount = gets.chomp
 
-    if number?(total_loan_amount) && total_loan_amount.to_f >= 0 
+    if number?(total_loan_amount) && total_loan_amount.to_f >= 0
       break
     else
       prompt(messages('valid number'))
@@ -54,7 +56,7 @@ loop do # main loop
     prompt(messages('apr'))
     apr_percentage = gets.chomp
 
-    if number?(apr_percentage) && apr_percentage.to_f >= 0 
+    if number?(apr_percentage) && apr_percentage.to_f >= 0
       break
     else
       prompt(messages('valid number'))
@@ -66,7 +68,7 @@ loop do # main loop
     prompt(messages('duration'))
     loan_duration_years = gets.chomp
 
-    if number?(loan_duration_years) && loan_duration_years.to_f >= 0 
+    if number?(loan_duration_years) && loan_duration_years.to_f >= 0
       break
     else
       prompt(messages('valid number'))
