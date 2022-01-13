@@ -1,3 +1,4 @@
+require 'pry'
 LANGUAGE = 'en'
 
 require 'yaml'
@@ -44,7 +45,7 @@ loop do
     break
   end
 end
-
+binding.pry
 prompt(messages('hi', LANGUAGE) + " #{name}")
 
 loop do # main loop

@@ -23,11 +23,13 @@ rescue ArgumentError
   false
 end
 
+puts "\e[H\e[2J"
+
 prompt(messages('welcome'))
 
 name = ''
 loop do
-  name = gets.chomp
+  name = gets.strip.chomp
 
   if name.empty?
     prompt(messages('valid name'))
