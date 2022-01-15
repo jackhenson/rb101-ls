@@ -99,6 +99,7 @@ def print_goodbye(name)
   prompt("Goodbye!")
 end
 
+system 'clear'
 prompt(messages('welcome'))
 
 name = get_name
