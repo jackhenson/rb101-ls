@@ -94,9 +94,11 @@ def display_score(player, comp)
   prompt("Current score is Player: #{player.length}, Computer: #{comp.length}.")
 
   if player.length >= COUNT_TO_WIN
-    prompt("You've scored #{COUNT_TO_WIN} times. You've won the match! Congratulations!")
+    prompt("You've scored #{COUNT_TO_WIN} times.
+          You've won the match! Congratulations!")
   elsif comp.length >= COUNT_TO_WIN
-    prompt("The computer has scored #{COUNT_TO_WIN} times. You've lost the match!")
+    prompt("The computer has scored #{COUNT_TO_WIN} times.
+          You've lost the match!")
   end
 end
 
