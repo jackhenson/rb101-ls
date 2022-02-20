@@ -1,5 +1,3 @@
-require 'pry'
-
 INITIAL_MARKER = ' '
 PLAYER_MARKER = 'X'
 COMPUTER_MARKER = 'O'
@@ -15,7 +13,6 @@ def prompt(msg)
   puts " => #{msg}"
 end
 
-# rubocop:disable Metrics/AbcSize
 def display_board(brd)
   system 'clear'
   puts "You're a #{PLAYER_MARKER}. Computer is #{COMPUTER_MARKER}."
@@ -33,7 +30,6 @@ def display_board(brd)
   puts "     |     |"
   puts ""
 end
-# rubocop:enable Metrics/AbcSize
 
 def initialize_board
   new_board = {}
@@ -56,31 +52,6 @@ def player_places_piece!(brd)
 
   brd[square] = PLAYER_MARKER
 end
-
-# def computer_places_piece!(brd)
-#   square = nil
-#   WINNING_LINES.each do |line|
-#     square = find_winning_square(line, brd)
-#     break if square
-#   end
-
-#   if !square
-#     WINNING_LINES.each do |line|
-#       square = find_at_risk_square(line, brd)
-#       break if square
-#     end
-#   end
-
-#   if !square
-#     if brd[5] == INITIAL_MARKER
-#       square = 5
-#     else
-#       square = empty_squares(brd).sample
-#     end
-#   end
-
-#   brd[square] = COMPUTER_MARKER
-# end
 
 def computer_places_piece!(brd)
   square = nil
@@ -106,7 +77,11 @@ end
 
 def place_piece!(brd, current_player)
   if current_player == 'Player'
-    player_places_piece!(brd)
+    if empty_squares(brd).size == 1
+      brd[empty_squares(brd)[0]] = PLAYER_MARKER
+    else
+      player_places_piece!(brd)
+    end
   elsif current_player == 'Computer'
     computer_places_piece!(brd)
     display_board(brd)
