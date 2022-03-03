@@ -3,6 +3,7 @@
 WINNING_SCORE = 21
 DEALER_HIT_MAX = 17
 SLEEP_DURATION = 1
+ROUNDS_TO_WIN = 5
 RULES = <<-MSG
   Goal: Get as close to 21 as possible, without going over.  
   You are the playing the dealer, you will both be dealt two cards.
@@ -49,7 +50,7 @@ end
 
 def display_greeting
   prompt "Welcome to Twenty-One!"
-  prompt "First player to win 5 rounds wins!"
+  prompt "First player to win #{ROUNDS_TO_WIN} rounds wins the tournament!"
 end
 
 def display_rules
@@ -373,7 +374,7 @@ def update_match_score(scores, matches_won)
 end
 
 def determine_tournament_winner(matches_won)
-  if matches_won[:player] == 5
+  if matches_won[:player] == ROUNDS_TO_WIN
     'Player'
   else
     'Dealer'
@@ -381,7 +382,7 @@ def determine_tournament_winner(matches_won)
 end
 
 def tournament_over?(matches_won)
-  matches_won[:player] == 5 || matches_won[:dealer] == 5
+  matches_won[:player] == ROUNDS_TO_WIN || matches_won[:dealer] == ROUNDS_TO_WIN
 end
 
 # Begin game
