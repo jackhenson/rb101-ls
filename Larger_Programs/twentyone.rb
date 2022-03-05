@@ -34,11 +34,11 @@ def play_again?
   loop do
     prompt("Do you want to play again?")
     prompt("Type 'Y' for yes or 'N' for no:")
-    answer = gets.chomp
+    answer = gets.downcase.chomp
     clear_screen
-    if answer.downcase == 'y' || answer.downcase == 'yes'
+    if answer == 'y' || answer == 'yes'
       return true
-    elsif answer.downcase == 'n' || answer.downcase == 'no'
+    elsif answer == 'n' || answer == 'no'
       break
     else
       prompt("That's not a valid choice.")
