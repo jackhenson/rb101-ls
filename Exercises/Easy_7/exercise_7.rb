@@ -14,7 +14,7 @@
 
 def show_multiplicative_average(arr)
   arr.map!(&:to_f)
-  product = format("%.3f", ((arr.inject(&:*))/arr.size))
+  product = format("%.3f", ((arr.inject(:*))/arr.size))
 end
 
 p show_multiplicative_average([3, 5])                # => The result is 7.500
