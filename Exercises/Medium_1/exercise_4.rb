@@ -42,8 +42,30 @@
 #       - from hash, select entries with 'on' values
 #       - return those keys
 
-def toggle_lights(n)
-  lights = (1..n).each_with_object({}) {|num, hsh| hsh[num] = 'off'}
+# All-in-one method
+# def toggle_lights(n)
+#   lights = (1..n).each_with_object({}) {|num, hsh| hsh[num] = 'off'}
+#   for num in 1..n
+#     lights.keys.each do |key|
+#       if key % num == 0
+#         lights[key] == 'on' ? lights[key] = 'off' : lights[key] = 'on'
+#       end
+#     end
+#   end
+
+#   lights.select {|k, v| v == 'on'}.keys
+# end
+
+# With helper methods
+def initialize_lights(n)
+  (1..n).each_with_object({}) {|num, hsh| hsh[num] = 'off'}
+end
+
+def on_lights(lights)
+  lights.select {|k, v| v == 'on'}.keys
+end
+
+def toggle_nth_lights(lights, n)
   for num in 1..n
     lights.keys.each do |key|
       if key % num == 0
@@ -51,8 +73,12 @@ def toggle_lights(n)
       end
     end
   end
+end
 
-  lights.select {|k, v| v == 'on'}.keys
+def toggle_lights(n)
+  lights = initialize_lights(n)
+  toggle_nth_lights(lights, n)
+  on_lights(lights)
 end
 
 p toggle_lights(5) == [1, 4]
