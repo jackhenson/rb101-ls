@@ -13,21 +13,39 @@
 #             - if letter's index+1 is divisable by 2, upcase it
 #       - return str
 
+# SECOND ATTEMPT
 def to_weird_case(str)
-  words = str.split(' ')
-  result = []
-  counter = 0
-  loop do
-    if (counter + 1) % 3 == 0
-      result << words[counter].chars.map.with_index {|char, idx| (idx+1) % 2 == 0 ? char.upcase : char}.join
+  str.split.map.with_index do |word, idx|
+    if (idx+1) % 3 == 0
+      word.chars.map.with_index do |char, idx|
+        if (idx+1) % 2 == 0
+          char.upcase
+        else
+          char
+        end
+      end.join
     else
-      result << words[counter]
+      word
     end
-    counter += 1
-    break if counter >= words.size
-  end
-  result.join(' ')
+  end.join(' ')
 end
+
+# FIRST ATTEMPT
+# def to_weird_case(str)
+#   words = str.split(' ')
+#   result = []
+#   counter = 0
+#   loop do
+#     if (counter + 1) % 3 == 0
+#       result << words[counter].chars.map.with_index {|char, idx| (idx+1) % 2 == 0 ? char.upcase : char}.join
+#     else
+#       result << words[counter]
+#     end
+#     counter += 1
+#     break if counter >= words.size
+#   end
+#   result.join(' ')
+# end
 
 # Examples:
 
