@@ -1,12 +1,45 @@
 # Have the method division_stringified(num1, num2) 
 # take both parameters being passed, divide num1 by num2, 
-#and return the result as a string with properly formatted commas.
+# and return the result as a string with properly formatted commas.
 #
 # If an answer is only 3 digits long, return the number with no commas.
 #
 # Example: if num1 is 123456789 and num2 is 10000 the output should be "12,346".
 #
 # Note: 2 divided by 3 should return '1'
+
+# p division_stringified(2, 3) #== "1"
+# p division_stringified(5, 2) #== "3"
+# p division_stringified(7, 3) #== "2"
+# p division_stringified(6874, 67) == "103"
+# p division_stringified(503394930, 43) == "11,706,859"
+# p division_stringified(1, 10) == "0"
+# p division_stringified(100000, 1) == "100,000"
+
+# input: two int
+# output: str, division of num1 with num 2 with correct comma placement
+# algo:
+#     - initialize num_str to string rep of division of num1 float by num2, round up
+#     - scan through str, return arr of 3 chars
+#       - iterate through arr with index
+#         - if index > 0, append comma to beginning
+#     - join and return
+
+def division_stringified(num1, num2)
+  num_str = (num1.to_f/num2).round.to_s
+  result = []
+  group = []
+  num_str.chars.reverse_each.with_index do |n, idx|
+    group.unshift n
+    if group.size % 3 == 0
+      result.unshift(group.join)
+      group = []
+    elsif idx == (num_str.size) - 1
+      result.unshift(group.join)
+    end
+  end  
+  result.join(',')
+end
 
 # input: 2 int
 # output: str, representing result of num1 divided by num2
@@ -47,19 +80,19 @@
 #   - Reverse the string
 # - Return the string
 
-def division_stringified(num1, num2)
-  reversed_digits = ((num2/num1) + 1).to_s.reverse
-  groups = []
-  reversed_digits.chars.each_with_index do |char, idx|
-    if idx % (3 - 1) == 0
-      groups <<
-    end
-end
+# def division_stringified(num1, num2)
+#   reversed_digits = ((num2/num1) + 1).to_s.reverse
+#   groups = []
+#   reversed_digits.chars.each_with_index do |char, idx|
+#     if idx % (3 - 1) == 0
+#       groups <<
+#     end
+# end
 
-p division_stringified(2, 3) #== "1"
-# p division_stringified(5, 2) #== "3"
-# p division_stringified(7, 3) #== "2"
-# p division_stringified(6874, 67) == "103"
-# p division_stringified(503394930, 43) == "11,706,859"
-# p division_stringified(1, 10) == "0"
-# p division_stringified(100000, 1) == "100,000"
+p division_stringified(2, 3) == "1"
+p division_stringified(5, 2) == "3"
+p division_stringified(7, 3) == "2"
+p division_stringified(6874, 67) == "103"
+p division_stringified(503394930, 43) == "11,706,859"
+p division_stringified(1, 10) == "0"
+p division_stringified(100000, 1) == "100,000"
