@@ -30,8 +30,6 @@
 
 # h = 3, bounce = 1, window = 1.5, result is -1 
 
-# (Condition 2) not fulfilled).
-
 # p bouncingBall(3, 0.66, 1.5) == 3
 # p bouncingBall(30, 0.66, 1.5) == 15
 # p bouncingBall(30, 0.75, 1.5) == 21
@@ -47,7 +45,7 @@
 #     - unless h >0, 1 > bounce > 0, and window < h, return -1
 #     - initialize pass_window to 1
 #     - initialize bounce height to h*bounce
-#     - until bounce height is less than window
+#     - until bounce height is less than or equal to window
 #       - pass_window += 2
 #       - bounce height = bounce height * bounce
 #     - return pass_window

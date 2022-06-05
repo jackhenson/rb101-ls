@@ -15,7 +15,7 @@
 def substring_test(str1, str2)
   return false if str1.empty? || str2.empty?
   substr1 = []
-  str1.chars.each_with_index do |char, idx|
+  str1.chars.each_with_index do |_, idx|
     substr_length = 2
     until substr_length > (str1.size - idx)
       substr1 << str1[idx, substr_length]
