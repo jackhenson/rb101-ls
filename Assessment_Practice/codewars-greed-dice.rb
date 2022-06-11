@@ -36,7 +36,7 @@
 
 def score( dice )
   counter = 0
-  a = dice.map do |die|
+  dice.map do |die|
     if dice.count(die) >= 3 && counter < 3
       counter += 1
       die == 1 ? (1000.to_f/3) : (die*100).to_f/3
