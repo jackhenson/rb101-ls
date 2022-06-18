@@ -29,7 +29,7 @@
 def find_missing_letter(arr)
   alphabet = ('a'..'z').to_a
   starting_index = alphabet.index(arr.first.downcase)
-  result = alphabet[starting_index, (arr.size)].reject {|i| arr.map(&:downcase).include?(i)}
+  result = alphabet[starting_index, (arr.size+1)].reject {|i| arr.map(&:downcase).include?(i)}
   arr[0] == arr[0].upcase ? result[0].upcase : result[0]
 end
 
