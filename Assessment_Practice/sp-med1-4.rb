@@ -27,3 +27,21 @@
 # With 10 lights, 3 lights are left on: lights 1, 4, and 9. 
 # The return value is [1, 4, 9].
 
+def lights(n)
+  bulbs = Hash.new
+  (1..n).each {|i| bulbs[i] = 'off'}
+  
+  n.times do |i| 
+    bulbs.each do |k,v| 
+      if (k % (i+1) == 0)
+        bulbs[k] == 'off' ? bulbs[k] = 'on' : bulbs[k] = 'off'
+      end
+    end
+  end
+        
+  bulbs.select{|k,v| v == 'on'}.keys
+
+end
+
+p lights(5) #== [1,4]
+p lights(10) #== [1, 4, 9]
