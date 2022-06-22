@@ -16,6 +16,18 @@
 # Example of a string rotated to the left by one position:
 # s = "123456" gives "234561".
 
+def revrot(str, n)
+  return "" if n <= 0 || str.empty?
+  chunks = []
+  str_chars = str.chars
+  str_chars.each do |char|
+    chunk = str_chars.slice!(0, n)
+    if chunk.size >= n
+      chunk.map{|c| c.to_i.**3}.sum % 2 == 0 ? chunks << chunk.reverse : chunks << chunk.rotate
+    end
+  end
+  chunks.join
+end
 
 # p revrot("1234", 0) == ""
 # p revrot("", 0) == ""
@@ -32,26 +44,26 @@
 # p revrot("563000655734469485", 4) == "0365065073456944"
 
 
-def revrot(str, sz)
-  return "" if sz <= 0 || sz > (str.size)
-  result = []
-  index = 0
-  until index >= str.size
-    chunk = str[index, sz]
-    if chunk.size >= sz
-      (chunk.to_i.digits.map{|i| i**3}.sum) % 2 == 0 ? result << chunk.reverse : result << chunk.concat(chunk.slice!(0))
-    end
-    index += sz
-  end
-  result.join
-end
+# def revrot(str, sz)
+#   return "" if sz <= 0 || sz > (str.size)
+#   result = []
+#   index = 0
+#   until index >= str.size
+#     chunk = str[index, sz]
+#     if chunk.size >= sz
+#       (chunk.to_i.digits.map{|i| i**3}.sum) % 2 == 0 ? result << chunk.reverse : result << chunk.concat(chunk.slice!(0))
+#     end
+#     index += sz
+#   end
+#   result.join
+# end
 
-p revrot("1234", 0) == ""
-p revrot("", 0) == ""
-p revrot("1234", 5) == ""
+# p revrot("1234", 0) == ""
+# p revrot("", 0) == ""
+# p revrot("1234", 5) == ""
 p revrot("733049910872815764", 5) == "330479108928157"
 p revrot("123456987654", 6) == "234561876549"
-p revrot("123456987653", 6) == "234561356789"
+p revrot("123456987653", 6) #== "234561356789"
 p revrot("66443875", 4) == "44668753"
 p revrot("66443875", 8) == "64438756"
 p revrot("664438769", 8) == "67834466"

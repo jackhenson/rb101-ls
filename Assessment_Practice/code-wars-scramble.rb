@@ -37,22 +37,35 @@
 
 
 
+# def scramble_words(words)
+#   stripped_str = words.downcase.scan(/\w\S*\w?\b/)
+#   sorted_chars = words.downcase.split.map {|word| word.delete('^a-zA-Z').slice(1...-1).chars.sort}.flatten
+#   result= stripped_str.map do |word|
+#             word.chars.map.with_index do |char, idx|
+#               idx == 0 || idx == (word.size-1) || char.count('^a-z') > 0 ? char : sorted_chars.shift
+#             end.join
+#           end
+#   words.split(' ').map.with_index do |word, idx|
+#     if word[0].count('^a-z') > 0
+#       word[0] + result[idx]
+#     elsif word[-1].count('^a-z') > 0
+#        result[idx] + word[-1]
+#     else
+#       result[idx]
+#     end
+#   end.join(' ')
+# end
+
+
 def scramble_words(words)
-  stripped_str = words.downcase.scan(/\w\S*\w?\b/)
-  sorted_chars = words.downcase.split.map {|word| word.delete('^a-zA-Z').slice(1...-1).chars.sort}.flatten
-  result= stripped_str.map do |word|
-            word.chars.map.with_index do |char, idx|
-              idx == 0 || idx == (word.size-1) || char.count('^a-z') > 0 ? char : sorted_chars.shift
-            end.join
-          end
-  words.split(' ').map.with_index do |word, idx|
-    if word[0].count('^a-z') > 0
-      word[0] + result[idx]
-    elsif word[-1].count('^a-z') > 0
-       result[idx] + word[-1]
-    else
-      result[idx]
-    end
+  punctuation = "-',."
+
+  words.split.map do |word|
+    word_letters = word.delete("-',.").chars
+    letters_sorted = [word_letters[0]] + word_letters[1..-2].sort + [word_letters[-1]]
+    word.chars.map do |char|
+      punctuation.include?(char) ? char : letters_sorted.shift
+    end.join
   end.join(' ')
 end
 
